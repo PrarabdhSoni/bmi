@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI CALCULATOR</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+    <h1> Welcome to BMI Calculaor </h1>
+    
+    <% if (locals.BMI){%>
+        <p id="_label"><%= BMI %></p>
+        <% if (BMI>=18.5 && BMI<25 ){%>
+            <p id="_label">"Congratulation you are normal 😊";</p> 
+        <% }else if (BMI<18.5){%>
+            <p id="_label">"You are underweight 😊😉";</p>
+        <% }else if (BMI>=25 && BMI<30){%>
+            <p id="_label">"You are overweight Work Hard 🏃";</p>
+        <% }else if(BMI>=30 && BMI<=35){%>
+            <p id="_label">"You are obese. Work Hard 🏃";</p>
+        <%}else{%>
+            <p id="_label">const result = "You are clinically obese.☹️";</p>
+        <%}%>
+    <%} else {%> 
+        <form action="/submit" method="POST">
+            <label for="height" id="_label">Height in m:</label>
+            <input type="number" step="0.01" placeholder="height" id="_input" name="height" required>
+            <label for="weight" id="_label">Weight in kg:</label>
+            <input type="number" step="0.01" placeholder="weight" id="_input" name="weight" required>
+            <input type="submit" value="Submit" id="_submit">
+        </form>
+    <%}%>
+</body>
+</html>
